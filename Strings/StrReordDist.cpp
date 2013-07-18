@@ -30,25 +30,25 @@ void create(char* str, int d, char ans[]) {
   int n = strlen(str);
   int freq[256] = {0};
   for (int i = 0; i < n; i++)
-  freq[str[i]]++;
+    freq[str[i]]++;
  
   int used[256] = {0};
   for (int i = 0; i < n; i++) {
-  bool excep[256] = {false};
-  bool done = false;
-  while (!done) {
-    int j = find_max(freq, excep);
-    if (j == -1) {
-      cout << "Error!\n";
-      return;
-    }
-    excep[j] = true;
-    if (used[j] <= 0) {
-      ans[i] = j;
-      freq[j]--;
-      used[j] = d;
-      done = true;
-    } 
+    bool excep[256] = {false};
+    bool done = false;
+    while (!done) {
+      int j = find_max(freq, excep);
+      if (j == -1) {
+        cout << "Error!\n";
+        return;
+      }
+      excep[j] = true;
+      if (used[j] <= 0) {
+        ans[i] = j;
+        freq[j]--;
+        used[j] = d;
+        done = true;
+      } 
   }
   for (int i = 0; i < 256; i++)
     used[i]--;
